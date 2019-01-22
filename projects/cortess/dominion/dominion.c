@@ -655,7 +655,8 @@ int adventurerEffect(struct gameState *state, int currentPlayer) {
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+//        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+        if (cardDrawn == copper || cardDrawn == silver) // assignment 2 bug
             drawntreasure++;
         else{
             temphand[z]=cardDrawn;
@@ -682,7 +683,8 @@ int council_roomEffect(struct gameState *state, int currentPlayer, int handPos){
     state->numBuys++;
 
     //Each other player draws a card
-    for (i = 0; i < state->numPlayers; i++)
+//    for (i = 0; i < state->numPlayers; i++)
+    for (i = 0; i < state->numPlayers - 1; i++) // assignment 2 bug
     {
         if ( i != currentPlayer )
         {
@@ -702,7 +704,8 @@ int feastEffect(struct gameState *state, int currentPlayer, int choice1){
     //gain card with cost up to 5
     //Backup hand
     for (i = 0; i <= state->handCount[currentPlayer]; i++){
-        temphand[i] = state->hand[currentPlayer][i];//Backup card
+//        temphand[i] = state->hand[currentPlayer][i];//Backup card
+        temphand[i+1] = state->hand[currentPlayer][i];// assignment 2 bug
         state->hand[currentPlayer][i] = -1;//Set to nothing
     }
     //Backup hand
@@ -789,7 +792,8 @@ int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choi
 
 int smithyEffect(struct gameState *state, int currentPlayer){
     //+3 Cards
-    for (i = 0; i < 3; i++)
+//    for (i = 0; i < 3; i++)
+    for (i = 0; i < 4; i++) // assignment 2 bug
     {
         drawCard(currentPlayer, state);
     }
