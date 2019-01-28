@@ -758,6 +758,7 @@ int feastEffect(struct gameState *state, int currentPlayer, int choice1){
 
 int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choice2){
     int i;
+    int j;
 
     j = state->hand[currentPlayer][choice1];  //store card we will trash
 
