@@ -673,6 +673,8 @@ int adventurerEffect(struct gameState *state, int currentPlayer) {
 }
 
 int council_roomEffect(struct gameState *state, int currentPlayer, int handPos){
+    int i;
+
     //+4 Cards
     for (i = 0; i < 4; i++)
     {
@@ -700,6 +702,7 @@ int council_roomEffect(struct gameState *state, int currentPlayer, int handPos){
 
 int feastEffect(struct gameState *state, int currentPlayer, int choice1){
     int temphand[MAX_HAND];
+    int i;
 
     //gain card with cost up to 5
     //Backup hand
@@ -755,6 +758,9 @@ int feastEffect(struct gameState *state, int currentPlayer, int choice1){
 }
 
 int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choice2){
+    int i;
+    int j;
+
     j = state->hand[currentPlayer][choice1];  //store card we will trash
 
     if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
@@ -791,6 +797,7 @@ int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choi
 }
 
 int smithyEffect(struct gameState *state, int currentPlayer){
+    int i;
     //+3 Cards
 //    for (i = 0; i < 3; i++)
     for (i = 0; i < 4; i++) // assignment 2 bug
