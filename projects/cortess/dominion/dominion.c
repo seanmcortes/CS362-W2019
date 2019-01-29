@@ -702,6 +702,7 @@ int council_roomEffect(struct gameState *state, int currentPlayer, int handPos){
 int feastEffect(struct gameState *state, int currentPlayer, int choice1){
     int temphand[MAX_HAND];
     int i;
+    int x;
 
     //gain card with cost up to 5
     //Backup hand
@@ -756,7 +757,7 @@ int feastEffect(struct gameState *state, int currentPlayer, int choice1){
     return 0;
 }
 
-int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choice2){
+int mineEffect(struct gameState *state, int currentPlayer, int handPos, int choice1, int choice2){
     int i;
     int j;
 
@@ -795,7 +796,7 @@ int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choi
     return 0;
 }
 
-int smithyEffect(struct gameState *state, int currentPlayer){
+int smithyEffect(struct gameState *state, int currentPlayer, int handPos){
     int i;
     //+3 Cards
 //    for (i = 0; i < 3; i++)
@@ -842,7 +843,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return -1;
 			
     case mine:
-        mineEffect(state, currentPlayer, choice1, choice2);
+        mineEffect(state, currentPlayer, handPos, choice1, choice2);
 			
     case remodel:
       j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -871,7 +872,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      smithyEffect(state, currentPlayer);
+      smithyEffect(state, currentPlayer, handPos);
 		
     case village:
       //+1 Card
