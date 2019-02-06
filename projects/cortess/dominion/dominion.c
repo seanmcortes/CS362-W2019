@@ -655,6 +655,7 @@ int adventurerEffect(struct gameState *state, int currentPlayer) {
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+        printf("Drew: %d\n", cardDrawn);
 //        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
         if (cardDrawn == copper || cardDrawn == silver) // assignment 2 bug
             drawntreasure++;
@@ -668,7 +669,7 @@ int adventurerEffect(struct gameState *state, int currentPlayer) {
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
-
+    printf("Hand count (dominion.c): %d\n", state->handCount[currentPlayer]);
     return 0;
 }
 
