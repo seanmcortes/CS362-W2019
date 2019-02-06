@@ -53,3 +53,8 @@ void unittest4() {
 
 	fclose(fp);
 }
+
+int main(int argc, char *argv[]){
+	unittest4();
+	return 0;
+}

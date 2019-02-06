@@ -18,33 +18,34 @@ void unittest2() {
 	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 					sea_hag, tribute, smithy, council_room};
 
-	FILE *fp;
-	fp = fopen("unittestresults.out", "a+");
 
 	initializeGame(numPlayers, k, seed, &G);
-	fprintf(fp, "----------------- Testing Function: %s ----------------\n", TESTFUNCTION);
+	printf("----------------- Testing Function: %s ----------------\n", TESTFUNCTION);
 
 	expected = 0;
 	
-	fprintf(fp, "Testing first players turn.\n");
-	fprintf(fp, "Expected value: %d, Tested value: %d\n", expected, whoseTurn(&G));
+	printf("Testing first players turn.\n");
+	printf("Expected value: %d, Tested value: %d\n", expected, whoseTurn(&G));
 
 	if(EQA(expected, whoseTurn(&G))){
-		fprintf(fp, "TEST PASSED\n");
+		printf("TEST PASSED\n");
 	} else {
-		fprintf(fp, "TEST FAILED\n");
+		printf("TEST FAILED\n");
 	}
 
 	expected = 1;
 	G.whoseTurn = 1;
 
-	fprintf(fp, "Testing second player's turn.\n");
-	fprintf(fp, "Expected value: %d, Tested value: %d\n", expected, isGameOver(&G));
+	printf("Testing second player's turn.\n");
+	printf("Expected value: %d, Tested value: %d\n", expected, isGameOver(&G));
 	if(EQA(expected, whoseTurn(&G))){
-		fprintf(fp, "TEST PASSED\n");
+		printf("TEST PASSED\n");
 	} else {
-		fprintf(fp, "TEST FAILED\n");
+		printf("TEST FAILED\n");
 	}
+}
 
-	fclose(fp);
+int main(int argc, char *argv[]){
+	unittest2();
+	return 0;
 }

@@ -60,3 +60,8 @@ void unittest3() {
 
 	fclose(fp);
 }
+
+int main(int argc, char *argv[]){
+	unittest3();
+	return 0;
+}
