@@ -50,6 +50,7 @@ void cardtest4() {
 	expected = village;
 	printf("Testing that village is now in played pile.\n");
 	testEqual(post.playedCards[post.playedCardCount - 1], village);
+	printf("Played count: %d\n", post.playedCardCount);
 
 	expected = pre.numActions + 1;
 	printf("Testing that current player has gained 2 actions.\n");

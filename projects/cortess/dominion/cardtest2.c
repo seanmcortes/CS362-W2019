@@ -41,25 +41,43 @@ void cardtest2() {
 	
 	printf("----------------- Testing Card: %s ----------------\n", TESTFUNCTION);
 	post.hand[currentPlayer][0] = card;
-	printf("Card tested: %d\n", post.hand[currentPlayer][0]);
-	printf("Post played card count: %d\n", post.playedCardCount);
+
 	// Effect: draw 3 cards
-	if(playCard(handPos, choice1, choice2, choice3, &post) > -1){
-		// check that current player has drawn 3 cards (pre hand + 2)
-		expected = pre.handCount[currentPlayer] + 2;
-		printf("Testing correct player has drawn 3 cards.\n");
-		testEqual(post.handCount[currentPlayer], expected);
+	playCard(handPos, choice1, choice2, choice3, &post);
+	// check that current player has drawn 3 cards (pre hand + 2)
+	expected = pre.handCount[currentPlayer] + 2;
+	printf("Testing correct player has drawn 3 cards.\n");
+	testEqual(post.handCount[currentPlayer], expected);
 
-		// check that smithy is now in discard
-		expected = smithy;
-		printf("Testing that smithy is now in played cards pile.\n");
-		testEqual(post.playedCards[post.playedCardCount - 1], expected);
+	// check that smithy is now in discard
+	expected = smithy;
+	printf("Testing that smithy is now in played cards pile.\n");
+	printf("Played cards: %d\n", post.playedCardCount);
+	testEqual(post.playedCards[post.playedCardCount - 1], expected);
 
-		// check state of other player hand and discard has not changed
-		expected = pre.handCount[currentPlayer + 1];
-		printf("Testing that other player's hand has not been affected.\n");
-		testEqual(post.handCount[currentPlayer + 1], expected);
-	}
+	// check state of other player hand and discard has not changed
+	expected = pre.handCount[currentPlayer + 1];
+	printf("Testing that other player's hand has not been affected.\n");
+	testEqual(post.handCount[currentPlayer + 1], expected);
+
+	// // Effect: draw 3 cards
+	// if(playCard(handPos, choice1, choice2, choice3, &post) > -1){
+	// 	// check that current player has drawn 3 cards (pre hand + 2)
+	// 	expected = pre.handCount[currentPlayer] + 2;
+	// 	printf("Testing correct player has drawn 3 cards.\n");
+	// 	testEqual(post.handCount[currentPlayer], expected);
+
+	// 	// check that smithy is now in discard
+	// 	expected = smithy;
+	// 	printf("Testing that smithy is now in played cards pile.\n");
+	// 	printf("Played cards: %d\n", post.playedCardCount);
+	// 	testEqual(post.playedCards[post.playedCardCount - 1], expected);
+
+	// 	// check state of other player hand and discard has not changed
+	// 	expected = pre.handCount[currentPlayer + 1];
+	// 	printf("Testing that other player's hand has not been affected.\n");
+	// 	testEqual(post.handCount[currentPlayer + 1], expected);
+	// }
 }
 
 int main(int argc, char *argv[]){

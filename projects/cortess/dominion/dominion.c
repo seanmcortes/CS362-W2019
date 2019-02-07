@@ -259,7 +259,7 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
     {
       return -1;
     }
-	
+
   //reduce number of actions
   state->numActions--;
 
@@ -643,7 +643,8 @@ int getCost(int cardNumber)
   return -1;
 }
 
-int adventurerEffect(struct gameState *state, int currentPlayer) {
+int adventurerEffect(struct gameState *state, int currentPlayer, int handPos) {
+    int i = 0;
     int z = 0;// this is the counter for the temp hand
     int cardDrawn;
     int temphand[MAX_HAND];
@@ -655,21 +656,24 @@ int adventurerEffect(struct gameState *state, int currentPlayer) {
         }
         drawCard(currentPlayer, state);
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-        printf("Drew: %d\n", cardDrawn);
-//        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-        if (cardDrawn == copper || cardDrawn == silver) // assignment 2 bug
+
+       if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold) {
+        // if (cardDrawn == copper || cardDrawn == silver) // assignment 2 bug
             drawntreasure++;
-        else{
+        } else {
             temphand[z]=cardDrawn;
             state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
             z++;
         }
     }
+
     while(z-1>=0){
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
-    printf("Hand count (dominion.c): %d\n", state->handCount[currentPlayer]);
+    
+    discardCard(handPos, currentPlayer, state, 0);
+
     return 0;
 }
 
@@ -833,19 +837,19 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-        adventurerEffect(state, currentPlayer);
+        return(adventurerEffect(state, currentPlayer, handPos));
 			
     case council_room:
-        council_roomEffect(state, currentPlayer, handPos);
+        return(council_roomEffect(state, currentPlayer, handPos));
 			
     case feast:
-        feastEffect(state, currentPlayer, choice1);
+        return(feastEffect(state, currentPlayer, choice1));
 			
     case gardens:
       return -1;
 			
     case mine:
-        mineEffect(state, currentPlayer, handPos, choice1, choice2);
+        return(mineEffect(state, currentPlayer, handPos, choice1, choice2));
 			
     case remodel:
       j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -874,7 +878,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      smithyEffect(state, currentPlayer, handPos);
+      return(smithyEffect(state, currentPlayer, handPos));
 		
     case village:
       //+1 Card
