@@ -9,9 +9,7 @@
 #define TESTFUNCTION "whoseTurn"
 #define EQA(x, y) (x == y)
 
-void unittest2() {
-	int i;
-	int expected;
+void unittest2() {	int expected;
 	int seed = 1000;
 	int numPlayers = 2;
 	struct gameState G;
@@ -28,9 +26,9 @@ void unittest2() {
 	printf("Expected value: %d, Tested value: %d\n", expected, whoseTurn(&G));
 
 	if(EQA(expected, whoseTurn(&G))){
-		printf("TEST PASSED\n");
+		printf("TEST PASSED\n\n");
 	} else {
-		printf("TEST FAILED\n");
+		printf("TEST FAILED\n\n");
 	}
 
 	expected = 1;
@@ -39,9 +37,9 @@ void unittest2() {
 	printf("Testing second player's turn.\n");
 	printf("Expected value: %d, Tested value: %d\n", expected, isGameOver(&G));
 	if(EQA(expected, whoseTurn(&G))){
-		printf("TEST PASSED\n");
+		printf("TEST PASSED\n\n");
 	} else {
-		printf("TEST FAILED\n");
+		printf("TEST FAILED\n\n");
 	}
 }
 

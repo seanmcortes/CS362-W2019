@@ -29,9 +29,9 @@ void unittest1() {
 	printf("Expected value: %d, Tested value: %d\n", expected, isGameOver(&G));
 
 	if(EQA(expected, isGameOver(&G))){
-		printf("TEST PASSED\n");
+		printf("TEST PASSED\n\n");
 	} else {
-		printf("TEST FAILED\n");
+		printf("TEST FAILED\n\n");
 	}
 
 	expected = 1;
@@ -46,9 +46,9 @@ void unittest1() {
 	printf("Testing three empty supply piles.\n");
 	printf("Expected value: %d, Tested value: %d\n", expected, isGameOver(&G));
 	if(EQA(expected, isGameOver(&G))){
-		printf("TEST PASSED\n");
+		printf("TEST PASSED\n\n");
 	} else {
-		printf("TEST FAILED\n");
+		printf("TEST FAILED\n\n");
 	}
 
 	expected = 0;

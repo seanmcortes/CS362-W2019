@@ -19,20 +19,17 @@ void unittest4() {
 	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 					sea_hag, tribute, smithy, council_room};
 
-	FILE *fp;
-	fp = fopen("unittestresults.out", "a+");
-
 	initializeGame(numPlayers, k, seed, &G);
-	fprintf(fp, "----------------- Testing Function: %s ----------------\n", TESTFUNCTION);
+	printf("----------------- Testing Function: %s ----------------\n", TESTFUNCTION);
 
 	expected = 5;
-	fprintf(fp, "Testing starting hand");
-	fprintf(fp, "Expected value: %d, Tested value: %d\n", expected, numHandCards(&G));
+	printf("Testing starting hand");
+	printf("Expected value: %d, Tested value: %d\n", expected, numHandCards(&G));
 
 	if(EQA(expected, numHandCards(&G))){
-		fprintf(fp, "TEST PASSED\n");
+		printf("TEST PASSED\n\n");
 	} else {
-		fprintf(fp, "TEST FAILED\n");
+		printf("TEST FAILED\n\n");
 	}
 
 	for (i = 0; i < G.handCount[currentPlayer]; i++){
@@ -42,16 +39,14 @@ void unittest4() {
 	G.handCount[currentPlayer] = 0;
 
 	expected = 0;
-	fprintf(fp, "Testing discarded hand.\n");
-	fprintf(fp, "Expected value: %d, Tested value: %d\n", expected, numHandCards(&G));
+	printf("Testing discarded hand.\n");
+	printf("Expected value: %d, Tested value: %d\n", expected, numHandCards(&G));
 
 	if(EQA(expected, numHandCards(&G))){
-		fprintf(fp, "TEST PASSED\n");
+		printf("TEST PASSED\n\n");
 	} else {
-		fprintf(fp, "TEST FAILED\n");
+		printf("TEST FAILED\n\n");
 	}
-
-	fclose(fp);
 }
 
 int main(int argc, char *argv[]){

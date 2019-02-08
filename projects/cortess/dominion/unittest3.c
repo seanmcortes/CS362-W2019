@@ -30,35 +30,26 @@ void unittest3() {
 							"baron", "great hall", "minion", "steward", "tribute", 
 							"ambassador", "cutpurse", "embargo", "outpost", "salvager", 
 							"sea hag", "treasure map"};
-	FILE *fp;
-	fp = fopen("unittestresults.out", "a+");
 
 	initializeGame(numPlayers, k, seed, &G);
-	fprintf(fp, "----------------- Testing Function: %s ----------------\n", TESTFUNCTION);
-
-	// expected = 0;
-	// fprintf(fp, "Testing \"curse\".\n");
-	// fprintf(fp, "Expected value: %d, Tested value: %d\n", expected, getCost(0));
-
-	// if(EQA(expected, getCost(0))){
-	// 	fprintf(fp, "TEST PASSED\n");
-	// } else {
-	// 	fprintf(fp, "TEST FAILED\n");
-	// }
+	printf("----------------- Testing Function: %s ----------------\n", TESTFUNCTION);
 
 	for (i = 0; i < 27; i++) {
-		fprintf(fp, "Testing \"%s\".\n", cardNames[i]);
-		fprintf(fp, "Expected value: %d, Tested value: %d\n", expected[i], getCost(i));
+		printf("Testing \"%s\".\n", cardNames[i]);
+		printf("Expected value: %d, Tested value: %d\n", expected[i], getCost(i));
 
 		if(EQA(expected[i], getCost(i))){
-			fprintf(fp, "TEST PASSED\n");
+			printf("TEST PASSED\n\n");
 		} else {
-			fprintf(fp, "TEST FAILED\n");
+			printf("TEST FAILED\n\n");
 		}
 	}
 	
-
-	fclose(fp);
+	if(EQA(-1, getCost(27))){
+		printf("TEST PASSED\n\n");
+	} else {
+		printf("TEST FAILED\n\n");
+	}
 }
 
 int main(int argc, char *argv[]){
