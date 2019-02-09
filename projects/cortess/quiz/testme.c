@@ -5,14 +5,40 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+    // generate a random character from the preset inputs
+    char charOptions[9] = {
+    		'[', '(', '{', 
+    		' ', 'a', 'x', 
+    		'}', ')', ']'
+    	};
+    int min = 0;
+    int max = 9;
+    int randomNum = min + rand() % (max - min);
+
+    return charOptions[randomNum];
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+    // generate a string given preset characters and size
+    int STR_LEN = 6;
+
+    char charOptions[5] = {
+    		'r', 'e', 's', 't', '\0'
+    };
+    char *res = (char*) malloc(STR_LEN * sizeof(char));		// initialize string
+    int i;
+    int min = 0;
+    int max = 5;
+    int randomNum;
+
+    // construct string
+    for(i = 0; i < STR_LEN; i++){	
+    	randomNum = min + rand() % (max - min);
+    	res[i] = charOptions[randomNum];	// select random char from charOptions
+    }
+
+    return res;
 }
 
 void testme()
@@ -21,6 +47,7 @@ void testme()
   char *s;
   char c;
   int state = 0;
+
   while (1)
   {
     tcCount++;
