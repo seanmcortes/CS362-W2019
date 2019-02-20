@@ -236,12 +236,14 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
   //check if it is the right phase
   if (state->phase != 0)
     {
+      printf("Phase!\n");
       return -1;
     }
 	
   //check if player has enough actions
   if ( state->numActions < 1 )
     {
+      printf("Numactions!\n");
       return -1;
     }
 	
