@@ -76,7 +76,7 @@ int main(){
 
 	printf("----------------- Testing Card: %s ----------------\n", TESTFUNCTION);
 
-	for (i = 0; i < 1000; i++){
+	for (i = 0; i < 100; i++){
 		for (j = 0; j < sizeof(struct gameState); j++){
 			((char*)&G)[j] = floor(Random() * 256);
 		}

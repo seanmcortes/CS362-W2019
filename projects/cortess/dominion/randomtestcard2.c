@@ -34,7 +34,7 @@ void checkCard(struct gameState *G, int currentPlayer){
 
 	// check that current player has drawn 1 card
 	expected = pre.handCount[currentPlayer];
-	testEqual(G->handCount[currentPlayer], expected, "TEST FAILED: Player did not draw 3 cards.");
+	testEqual(G->handCount[currentPlayer], expected, "TEST FAILED: Player did not draw 1 card.");
 
 	// check that cards drawn came from current player's deck
 	expected = pre.deckCount[currentPlayer] - 1;
@@ -44,7 +44,7 @@ void checkCard(struct gameState *G, int currentPlayer){
 	expected = village;
 	testEqual(G->playedCards[G->playedCardCount - 1], expected, "TEST FAILED: Village is not in played cards pile.");
 
-	// check that player has gained added actions
+	// check that player has gained 2 actions
 	expected = pre.numActions + 1;
 	testEqual(G->numActions, expected, "TEST FAILED: Num actions is incorrect");
 }
@@ -57,7 +57,7 @@ int main(){
 	struct gameState G;
 	printf("----------------- Testing Card: %s ----------------\n", TESTFUNCTION);
 
-	for (i = 0; i < 1000; i++){
+	for (i = 0; i < 100; i++){
 		for (j = 0; j < sizeof(struct gameState); j++){
 			((char*)&G)[j] = floor(Random() * 256);
 		}
